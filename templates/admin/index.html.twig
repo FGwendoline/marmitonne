@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Administration {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1> Gestionnaire de recettes</h1>
+
+        <a href="{{ path('admin_create') }}" class="btn btn-success">Ajouter une recette</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for recette in recettes %}
+                <tr>
+                    <td>{{ recette.id }}</td>
+                    <td>{{ recette.titre }}</td>
+                    <td>
+                        <a href="{{ path('admin_edit', {id: recette.id}) }}" class="btn btn-secondary">Editer</a>
+                        <button class="btn btn-danger">Supprimer</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
